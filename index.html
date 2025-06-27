@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo list-app</title>
+</head>
+<style>
+    body{
+        height: 100vh;
+        align-items: center;
+        justify-content: center ;
+        display: flex;
+    }
+    .container{
+        background: lightslategray;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        padding: 10px;
+        border-radius: 20px;
+        width: 40vw;
+flex-direction: column;
+        border: none;
+    }
+    .input-box{
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        width: 100%;
+        gap: 5px;
+    }
+    input::placeholder{
+        color: black;
+        padding-left: 10px;
+    
+    }
+    input{
+        width: 80%;
+        padding: 15px 10px;
+        border-radius: 20px;
+        border: none;
+    }
+    button{
+        padding: 15px;
+        border-radius: 20px;
+        border: none;
+        background-color: rgb(69, 146, 69);
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        
+    
+    }
+    .todo-list{
+        width: 90%;
+        text-align: left;
+    }
+    li{
+        list-style: none;
+        align-items: center;
+        justify-content: space-between;
+        width: 35vw;
+        background-color: antiquewhite;
+        display: inline-flex;
+        padding: 15px 10px;
+        border-radius: 20px;
+        border: none;
+        position: relative;
+        right: 35px;
+        margin: 5px 0px;
+    }
+    li button{
+        background: red;
+    }
+    @media (max-width:1000px){
+        .container{
+            width: 80vw;
+        }
+        /* button{
+            font-size: 12px;
+            padding: 12px;
+        } */
+         li{
+            width: 70vw;
+         }
+    }
+    
+</style>
+<body>
+    <div class="container">
+        <div class="input-box">
+            <input type="text" id="input-task" placeholder="Enter your task">
+            <button onclick="add()">AddTask</button>
+            
+           
+            
+
+        </div>
+         <ul class="todo-list">
+           
+         </ul>
+    </div>
+    <script>
+        function add(){
+            const ul=document.querySelector('ul');
+            const input=document.getElementById('input-task').value;
+            // const text=input.value.trim();
+            const text=input;
+            if(text==='') return;
+            const li= document.createElement('li');
+            li.textContent=text;
+            const deltbtn= document.createElement('button');
+            deltbtn.textContent='Delete' ;
+            deltbtn.addEventListener("click",()=>{
+                li.remove();
+            })
+            li.appendChild(deltbtn);
+           ul.appendChild(li);
+            input.value='';
+
+        }
+    </script>
+    
+</body>
+</html>
